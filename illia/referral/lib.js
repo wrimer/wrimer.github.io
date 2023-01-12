@@ -609,7 +609,6 @@ if (!('remove' in Element.prototype)) {
         iframe.style.display = 'none';
         iframe.style.opacity = '0';
         this.setAttributes(iframe, options);
-        iframe.setAttribute('allow', 'camera *;microphone *');
         this.insertIframeIntoContainer(iframe, container);
 
         utils.subscribe('responsive_iframe_height', iframe.name, function (data, iframe) {

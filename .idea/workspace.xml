@@ -1,28 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7c8ad4f4-ab25-4f75-90a7-e8871bd481ad" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/illia/ec/init.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/ec/local/1.liquid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/ec/local/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/ec/local/pp.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/ec/local/sa.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/ec/void/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/ec/void/lib2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/loyalty/bastion/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/loyalty/init.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/loyalty/lib.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/loyalty/local/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/loyalty/local/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/loyalty/prod/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/loyalty/prod/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/loyalty/void/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/loyalty/void/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/referral/init.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/referral/lib.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/referral/local/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/illia/referral/void/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/wrimer.github.io1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/wrimer.github.io1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/illia/referral/lib.js" beforeDir="false" afterPath="$PROJECT_DIR$/illia/referral/lib.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +32,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/illyakhvesevich/projects/wrimer.github.io",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "ruby.rails.projectView.checked": "true"
   }
 }]]></component>
@@ -68,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673514433788</updated>
-      <workItem from="1673514434867" duration="127000" />
+      <workItem from="1673514434867" duration="540000" />
     </task>
     <servers />
   </component>
