@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Loyalty Demo</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia praesentium
+  consectetur odit ipsum eaque labore at odio quas dignissimos vitae optio,
+  voluptate aliquid dolor amet perferendis? Cupiditate ad ea fuga.
+
+  <div id="talkable-offer"></div>
+
+  <script>
+    window.ENV = 'void'
+  </script>
+  <script>
+    window.talkablePlacementsConfig = {
+      "placements": [{
+        "id": 3,
+        "inclusion_matcher": {"blank": true},
+        "inclusion_matchers": [{"blank": true}],
+        "exclusion_matchers": [],
+        "event_category": "purchase",
+        "device_types": ["desktop", "tablet", "mobile"],
+        "appearance": "popup",
+        "static_html": [],
+        "has_live_campaigns": false
+      }, {
+        "id": 36,
+        "inclusion_matcher": {"blank": true},
+        "inclusion_matchers": [{"blank": true}],
+        "exclusion_matchers": [],
+        "event_category": "purchase",
+        "device_types": ["desktop", "tablet", "mobile"],
+        "appearance": "popup",
+        "static_html": [],
+        "has_live_campaigns": false
+      }, {
+        "id": 235283,
+        "inclusion_matcher": {"blank": true},
+        "inclusion_matchers": [{"blank": true}],
+        "exclusion_matchers": [],
+        "event_category": "affiliate_member",
+        "device_types": ["desktop", "tablet", "mobile"],
+        "appearance": "inline",
+        "static_html": [],
+        "has_live_campaigns": true
+      }, {
+        "id": 50,
+        "inclusion_matcher": {"host_pattern": null, "query_pattern": {}, "path_pattern": "/share"},
+        "inclusion_matchers": [{"host_pattern": null, "query_pattern": {}, "path_pattern": "/share"}],
+        "exclusion_matchers": [],
+        "event_category": "affiliate_member",
+        "device_types": ["tablet", "mobile"],
+        "appearance": "inline",
+        "static_html": [],
+        "has_live_campaigns": false
+      }, {
+        "id": 38,
+        "inclusion_matcher": {"blank": true},
+        "inclusion_matchers": [{"blank": true}],
+        "exclusion_matchers": [],
+        "event_category": "affiliate_member",
+        "device_types": ["desktop", "tablet", "mobile"],
+        "appearance": "gleam",
+        "static_html": [],
+        "has_live_campaigns": false
+      }, {
+        "id": 39,
+        "inclusion_matcher": {"blank": true},
+        "inclusion_matchers": [{"blank": true}],
+        "exclusion_matchers": [],
+        "event_category": "affiliate_member",
+        "device_types": ["desktop", "tablet", "mobile"],
+        "appearance": "widget",
+        "static_html": [],
+        "has_live_campaigns": false
+      }],
+      "conversion_placements": [{
+        "id": 40,
+        "inclusion_matcher": {"blank": true},
+        "inclusion_matchers": [{"blank": true}],
+        "exclusion_matchers": [],
+        "event_category": "email_capture_popup",
+        "device_types": ["desktop", "tablet", "mobile"],
+        "appearance": "popup",
+        "static_html": [],
+        "has_live_campaigns": false
+      }],
+      "loyalty_placements": [{
+        "id": 41,
+        "inclusion_matcher": {"host_pattern": null, "query_pattern": {}, "path_pattern": "/loyalty"},
+        "inclusion_matchers": [{"host_pattern": null, "query_pattern": {}, "path_pattern": "/loyalty"}],
+        "exclusion_matchers": [],
+        "event_category": "loyalty_dashboard",
+        "device_types": ["desktop", "tablet", "mobile"],
+        "appearance": "widget",
+        "static_html": [],
+        "has_live_campaigns": false
+      }, {
+        "id": 42,
+        "inclusion_matcher": {"host_pattern": null, "query_pattern": {}, "path_pattern": "/checkout"},
+        "inclusion_matchers": [{"host_pattern": null, "query_pattern": {}, "path_pattern": "/checkout"}],
+        "exclusion_matchers": [],
+        "event_category": "loyalty_widget",
+        "device_types": ["desktop", "tablet", "mobile"],
+        "appearance": "widget",
+        "static_html": [],
+        "has_live_campaigns": false
+      }],
+      "integration_id": "pavel",
+      "site_url": "http://pavel.com",
+      "timestamp": 1652339343
+    };
+  </script>
+  <script src="../init.js" type="text/javascript"></script>
+  <script>
+    window._talkableq.push(["register_affiliate", {}]);
+  </script>
+  <script async src="../lib.js" type="text/javascript"></script>
+</body>
+
+</html>

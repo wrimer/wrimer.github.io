@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Static Widget Demo</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia praesentium
+  consectetur odit ipsum eaque labore at odio quas dignissimos vitae optio,
+  voluptate aliquid dolor amet perferendis? Cupiditate ad ea fuga.
+
+  <div id="talkable-offer"></div>
+  <script>
+    window.ENV = 'local'
+  </script>
+  <script src="../init.js" type="text/javascript"></script>
+  <script>
+    window._talkableq.push(["show_email_capture_offer", {
+      email_capture_show_timeout: 0
+    }]);
+  </script>
+  <script async src="//curebit-development.s3.amazonaws.com/integration/clients/pavel-ec.min.js" type="text/javascript"></script>
+</body>
+</html>

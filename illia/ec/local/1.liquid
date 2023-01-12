@@ -1,0 +1,373 @@
+{% assign advocate_signup_page_headline = "advocate_signup_page_headline" | localize: "Give&nbsp;[[ friend_incentive.description ]], Get&nbsp;[[ advocate_incentive.description ]]!" %}
+{% assign advocate_signup_page_description = "advocate_signup_page_description" | localize: "Give friends&nbsp;[[ friend_incentive.description ]] off their first order, and you'll get&nbsp;[[ advocate_incentive.description ]] when they make a purchase." %}
+{% assign default_sharing_channel_emphasis = "default_sharing_channel_emphasis"| localize: "Email", "Facebook", "Link" %}
+{% assign headline = advocate_signup_page_headline %}
+{% assign description = advocate_signup_page_description %}
+{% assign advocate_signup_page_show_opt_in_checkbox = "advocate_signup_page_show_opt_in_checkbox" | localize: "Yes - checked", "Yes - unchecked", "No" %}
+{% if advocate_signup_page_show_opt_in_checkbox == "Yes - checked" %}
+  {% assign opt_in_checkbox_state = "checked" %}
+{% endif %}
+{% assign advocate_sign_in = "advocate_sign_in" | localize: "Facebook", "Google", "Facebook and Google", "None", default: "Facebook and Google" %}
+{% if user_agent.desktop %}
+  {% assign campaign_layout = "campaign_layout" | localize: "Left", "Right" | downcase %}
+  {% assign campaign_layout_class = 'is-' | append: campaign_layout %}
+{% endif %}
+{% if advocate_offer.active %}
+  {% assign ad_incentives = incentives | where: "for_advocate", true %}
+  {% assign advocate_incentives_count = ad_incentives | size %}
+
+  {% if advocate_incentives_count > 1 %}
+    {% assign ad_incentive = incentives.advocate_tiered_reward_1 %}
+  {% else %}
+    {% assign ad_incentive = advocate_incentive %}
+  {% endif %}
+
+  {% capture variables %}
+    {% if advocate_offer.valid_until != blank %}
+      <div>
+        Offer expires on [[ advocate_offer.valid_until | format_date: locale: date_format_language ]]
+      </div>
+    {% endif %}
+    {% if ad_incentive.criteria_config.new_customer or ad_incentive.criteria_config.subtotal_min != blank %}
+      *Offer valid only
+    {% endif %}
+    {% if ad_incentive.criteria_config.new_customer %}
+      for new customers
+    {% endif %}
+    {% if ad_incentive.criteria_config.subtotal_min != blank %}
+      with minimum purchase of {{ ad_incentive.criteria_config.subtotal_min | money: strip_insignificant_zeros: true }}.
+    {% endif %}
+  {% endcapture %}
+  {% capture advocate_signup_page_disclaimer_text %}
+    {{ variables | squish }}
+  {% endcapture %}
+  {% assign disclaimer = "advocate_signup_page_disclaimer" | localize: advocate_signup_page_disclaimer_text  %}
+
+{% endif %}
+
+{% assign automatic_font_sizing = "automatic_font_sizing" | localize: trait: "boolean", default: "Enabled" %}
+{% if automatic_font_sizing %}
+  {% if headline.size > 128 %}
+    {% assign header_font_size = "is-small" %}
+  {% elsif headline.size > 50 %}
+    {% assign header_font_size = "is-middle" %}
+  {% endif %}
+  {% if description.size > 300 %}
+    {% assign description_font_size = "is-small" %}
+  {% elsif description.size > 200 %}
+    {% assign description_font_size = "is-middle" %}
+  {% endif %}
+{% endif %}
+
+{% capture reward_block %}
+  <div>
+    email: {{ advocate_info.email }}
+    <br>
+    header: {{ advocate_signup_page_preheader }}
+  </div>
+{% endcapture %}
+
+
+{% capture reward_block_async %}
+  {% raw %}
+    <div>
+      email: {{ advocate_info.email }}
+      <br>
+      header: {{ advocate_signup_page_preheader }}
+    </div>
+  {% endraw %}
+{% endcapture %}
+
+{% capture expired_block_async %}
+  {% raw %}
+    <div>
+      email: {{ advocate_info.email }}
+      <br>
+      header: {{ advocate_signup_page_preheader }}
+    </div>
+  {% endraw %}
+{% endcapture %}
+
+{{ 'async_data' | async_rendering: reward_block: reward_block_async, expired_block: expired_block_async }}
+
+
+<div class="campaign is-inline">
+  <div class="container {{ campaign_layout_class }} {% if advocate_offer.active == false %}is-expired{% endif %}">
+    <div class="content">
+      <div class="wrap">
+        <div class="content-mobile-image"></div>
+        {% if advocate_offer.active %}
+          <div class="preheader">
+            {{ "advocate_signup_page_preheader" | localize: "Refer a Friend" }}
+          </div>
+        {% endif %}
+        <div class="header{{ header_font_size | prepend: ' ' }}">
+          <h1>
+            {{ headline }}
+          </h1>
+        </div>
+        <div class="subheader{{ description_font_size | prepend: ' ' }}">
+          <h2>
+            {{ description }}
+          </h2>
+
+          <div class="dsa">
+            test: {{ reward_block }}
+          </div>
+          <div class="async">
+            async:
+          </div>
+        </div>
+
+        <div class="js-after">
+
+        </div>
+
+        <div class="signup-form">
+          <form class="form js-affiliate-member-form" accept-charset="UTF-8" action="{{ signup_offer_path }}" method="post">
+            <div class="field">
+              <input
+                class="textfield js-first-name"
+                id="affiliate_member_first_name"
+                name="affiliate_member[first_name]"
+                placeholder="{{ 'advocate_signup_page_first_name_placeholder' | localize: 'Your First Name', trait: 'message' }}"
+                type="text"
+                />
+            </div>
+            <div class="field">
+              <input
+                class="textfield js-input-email"
+                name="affiliate_member[email]"
+                placeholder="{{ 'advocate_signup_page_email_placeholder' | localize: 'Your Email', trait: 'message' }}"
+                type="text"
+                value="32313@gmail.com"
+                />
+            </div>
+            {% if advocate_signup_page_show_opt_in_checkbox != "No" %}
+              <div class="field">
+                <label for="subs-checkbox" class="checkbox is-{{ opt_in_checkbox_state | default: "unchecked" }}">
+                  <input
+                    id="subs-checkbox"
+                    class="js-checkbox"
+                    name="affiliate_member[gated_param_subscribed]"
+                    type="checkbox"
+                    {{ opt_in_checkbox_state }}
+                    value="1"
+                    />
+                  {{ "advocate_signup_page_opt_in_checkbox" | localize: "Subscribe to our newsletters" }}
+                </label>
+              </div>
+            {% endif %}
+            <div class="field">
+              <input
+                class="button is-large js-submit"
+                name="commit"
+                type="submit"
+                value="{{ "advocate_signup_page_cta" | localize: "Invite Friends" | replace: '"', '&quot;' }}" />
+            </div>
+          </form>
+          {% if advocate_sign_in != "None" %}
+            <div class="separator">
+              <span>{{ "advocate_signup_page_alternate_login_tip" | localize: "or login with", trait: "message" }}</span>
+              <div class="border"></div>
+            </div>
+            <div class="alternative-login">
+              <ul>
+                {% if advocate_sign_in == "Facebook" or advocate_sign_in == "Facebook and Google"  %}
+                  <li>
+                    <div class="button is-hollow is-login is-facebook-login js-facebook-login-button">
+                      <span class='button-icon is-facebook-login'>
+                        <svg version="1.1" id="i:_facebook" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-4 1 9 18" xml:space="preserve"> <path d="M2,7.2v-2C2,4.7,2.3,4.3,2.7,4.3c0.1,0,0.1,0,0.2,0H5V1L2,1C0,0.8-1.8,2.3-2,4.4C-2,4.6-2,4.8-2,5v3h-2v3h2v8h4 v-8h2.6L5,8H2L2,7.2L2,7.2z" /></svg>
+                      </span>
+                      {{ "signup_page_facebook_cta" | localize: "Facebook" }}
+                    </div>
+                  </li>
+                {% endif %}
+                {% if advocate_sign_in == "Google" or advocate_sign_in == "Facebook and Google"  %}
+                  <li>
+                    <div class="button is-hollow is-login is-google" id="js-google-signup">
+                      <span class="button-icon is-google-login">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 18 19" xml:space="preserve"><g><g><defs><path id="SVGID_1_" d="M17.8,7.8H9.2v3.7h4.9c-0.5,2.3-2.4,3.7-4.9,3.7c-3,0-5.4-2.5-5.4-5.6s2.4-5.6,5.4-5.6 c1.3,0,2.5,0.5,3.4,1.3l2.7-2.8C13.6,0.9,11.6,0,9.2,0C4.1,0,0,4.2,0,9.5S4.1,19,9.2,19c4.6,0,8.8-3.5,8.8-9.5 C18,8.9,17.9,8.3,17.8,7.8z" /></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible;" /></clipPath><path class="google-1" d="M-0.8,15.1V3.9l7.1,5.6L-0.8,15.1z" /></g><g><defs><path id="SVGID_3_" d="M17.8,7.8H9.2v3.7h4.9c-0.5,2.3-2.4,3.7-4.9,3.7c-3,0-5.4-2.5-5.4-5.6s2.4-5.6,5.4-5.6 c1.3,0,2.5,0.5,3.4,1.3l2.7-2.8C13.6,0.9,11.6,0,9.2,0C4.1,0,0,4.2,0,9.5S4.1,19,9.2,19c4.6,0,8.8-3.5,8.8-9.5 C18,8.9,17.9,8.3,17.8,7.8z" /></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible;" /></clipPath><path class="google-2" d="M-0.8,3.9l7.1,5.6l2.9-2.6l10-1.7v-6H-0.8V3.9z" /></g><g><defs><path id="SVGID_5_" d="M17.8,7.8H9.2v3.7h4.9c-0.5,2.3-2.4,3.7-4.9,3.7c-3,0-5.4-2.5-5.4-5.6s2.4-5.6,5.4-5.6c1.3,0,2.5,0.5,3.4,1.3l2.7-2.8C13.6,0.9,11.6,0,9.2,0C4.1,0,0,4.2,0,9.5S4.1,19,9.2,19c4.6,0,8.8-3.5,8.8-9.5 C18,8.9,17.9,8.3,17.8,7.8z" /></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible;" /></clipPath><path class="google-3" d="M-0.8,15.1l12.6-9.9L15,5.6l4.2-6.5v20.7H-0.8V15.1z" /></g><g><defs><path id="SVGID_7_" d="M17.8,7.8H9.2v3.7h4.9c-0.5,2.3-2.4,3.7-4.9,3.7c-3,0-5.4-2.5-5.4-5.6s2.4-5.6,5.4-5.6 c1.3,0,2.5,0.5,3.4,1.3l2.7-2.8C13.6,0.9,11.6,0,9.2,0C4.1,0,0,4.2,0,9.5S4.1,19,9.2,19c4.6,0,8.8-3.5,8.8-9.5 C18,8.9,17.9,8.3,17.8,7.8z" /></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible;" /></clipPath><path class="google-4" d="M19.3,19.9L6.3,9.5L4.6,8.2l14.7-4.3V19.9z" /></g></g></svg>
+                      </span>
+                      {{ "signup_page_google_cta" | localize: "Google" }}
+                    </div>
+                  </li>
+                {% endif %}
+              </ul>
+            </div>
+          {% endif %}
+          <div class="ac-notice js-notice validation is-error"></div>
+        </div>
+
+         <div class="footer">
+          {% if advocate_offer.active %}
+            <div class="description">
+              {{ disclaimer }}
+            </div>
+          {% endif %}
+
+          {% if advocate_offer.active %}
+            {% assign terms_and_conditions = "Terms &amp; Conditions" %}
+            <div class="link">
+              <a href="#" data-toggle="terms">{{ "terms_and_conditions" | localize: terms_and_conditions, trait: "message" }}</a>
+            </div>
+          {% endif %}
+          <div class="talkable-logo">
+            {{ "footer_powered_by" | localize: "Powered by", trait: "message" }} <a href="https://www.talkable.com/?utm_source={{ site_setup.slug }}&amp;utm_campaign=talkable_branding&amp;utm_content={{ campaign_setup.id }}" target="_blank" class="talkable-logo-icon">Talkable</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="content-image"></div>
+
+
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  Talkable.changeOfferState({
+    offer_state: "offer", action: "add"
+  });
+  Talkable.scrollTo();
+
+  var messages = {
+    requestFailed: "{{ "request_failed" | localize: "Something isn’t right. Please try again.", trait: "message" }}",
+    facebookGetFbDataFailed: "{{ "request_failed" | localize: "Error getting data from Facebook.", trait: "message" }}",
+    invalidEmail: "{{ "invalid_email" | localize: "Please enter your valid email address", trait: "message" }}"
+  };
+
+  var timer = null;
+  var displayNotice = function(data, className, delay, $element) {
+    clearTimeout(timer);
+    var $notice = $element || $(".js-notice");
+
+    $notice
+      .html(data)
+      .removeClass("is-loading is-error is-success")
+      .addClass(className)
+      .fadeIn(300);
+
+    timer = setTimeout(function() {
+      $notice.fadeOut(300);
+    }, delay ? delay : 3000);
+  };
+
+  var emailFilter = /\S+@\S+\.\S+/;
+  var emailInput = $(".js-input-email");
+  var submit = $(".js-submit");
+  var affiliateMemberForm = $(".js-affiliate-member-form");
+
+  var emailValid = function() {
+    var value = $.trim(emailInput.val());
+
+    if (emailFilter.test(value)) {
+      emailInput.val(value);
+      return true;
+    } else {
+      displayNotice(messages.invalidEmail, "is-error");
+      return false;
+    }
+  };
+
+  Talkable.subscribe("get_facebook_data_succeeded", function(info) {
+    Talkable.signup(
+      {
+        email: info.email,
+        last_name: info.last_name,
+        first_name: info.first_name,
+        gated_param_subscribed: $('#subs-checkbox').is(':checked') ? '1' : '0',
+        custom_properties: {
+          fb_id: info.id,
+          verified: info.verified,
+          facebook_login: 'true',
+        },
+      },
+      function(data) {
+        window.location = window.location.origin + data.offer.show_path
+      },
+    )
+  });
+
+  Talkable.subscribe("get_facebook_data_failed", function(info) {
+    displayNotice(messages.facebookGetFbDataFailed, "is-error");
+  });
+
+  emailInput.blur(function() {
+    if (emailInput.val()) emailValid();
+  });
+
+  affiliateMemberForm.submit(function(event) {
+    event.preventDefault()
+    if (!emailValid()) return;
+
+    Talkable.signup(affiliateMemberForm.serialize(), function(data) {
+      submit.attr("disabled", true);
+      Talkable.loadLiquid("async_data", function (rendered_template) {
+        console.log('rendered_template', rendered_template)
+        // $(".campaign").html(rendered_template)
+      });
+      // window.location = window.location.origin + data.offer.show_path;
+    }, function() {
+      displayNotice(messages.requestFailed, "is-error");
+    });
+
+  });
+
+
+  {% if user_agent.platform == blank %}
+    if (!Talkable.configuration('offer_is_sample')) {
+      $('form input:first').focus();
+    }
+  {% endif %}
+
+  $(".js-checkbox").on("click", function() {
+    $(this).parent().toggleClass("is-checked");
+  });
+  // Pop-up and its toggle
+  $('[data-toggle]').on('click',
+    function(event) {
+      event.preventDefault();
+      window.scrollTo(0, 0);
+
+      var element = $(this).attr('data-toggle');
+      var thisPopup = $('[data-popup="' + element + '"]');
+      var popups = $('[data-popup]');
+      var visible = false;
+      var body = $("body");
+
+      function triggerPopup () {
+        if (thisPopup.hasClass('is-shown')) {
+          thisPopup.fadeOut(300).removeClass('is-shown');
+          body.removeClass('popup-shown');
+        } else {
+          {% if user_agent.mobile %}
+            Talkable.scrollTo();
+          {% endif %}
+          body.addClass('popup-shown');
+          thisPopup.fadeIn(300).addClass('is-shown');
+        }
+
+        return false;
+      }
+
+      $.each(popups, function(index, el) {
+        if ($(el).hasClass('is-shown')) {
+          visible = true;
+          return false;
+        }
+      });
+
+      if (visible) {
+        popups.not(thisPopup).fadeOut(300).removeClass('is-shown');
+        setTimeout(function() {
+          triggerPopup();
+        }, 300);
+
+      } else {
+        triggerPopup();
+      }
+    });
+
+</script>

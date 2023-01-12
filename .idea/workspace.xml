@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7c8ad4f4-ab25-4f75-90a7-e8871bd481ad" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/illia/ec/init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/ec/local/1.liquid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/ec/local/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/ec/local/pp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/ec/local/sa.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/ec/void/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/ec/void/lib2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/loyalty/bastion/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/loyalty/init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/loyalty/lib.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/loyalty/local/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/loyalty/local/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/loyalty/prod/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/loyalty/prod/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/loyalty/void/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/loyalty/void/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/referral/init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/referral/lib.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/referral/local/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/illia/referral/void/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/wrimer.github.io1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/wrimer.github.io1.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2KDgBm6GLQ3AE3ZFpuOudBt5zzl" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/illyakhvesevich/projects/wrimer.github.io",
+    "ruby.rails.projectView.checked": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7c8ad4f4-ab25-4f75-90a7-e8871bd481ad" name="Changes" comment="" />
+      <created>1673514433788</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673514433788</updated>
+      <workItem from="1673514434867" duration="127000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
